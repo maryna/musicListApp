@@ -1,0 +1,52 @@
+<div class="container">
+    <div class="page-header">
+        <h1>Recent Songs</h1>
+    </div>
+    <div class="row">
+        <div class="col-md-12">
+            <div class="table-responsive" >
+                <table class="table table-striped">
+                    <thead>
+                    <tr>
+                        <th>Image</th>
+                        <th>Artist</th>
+                        <th>Song Name</th>
+                        <th>Album</th>
+                        <th>Last Played</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr ng-repeat="song in songs">
+                        <td><img no-image ng-src="{{song.image[1]['#text']}}" class="img-responsive img-thumbnail" alt="" width="64px;" height="64px;"/></td>
+                        <td>{{song.artist['#text']}}</td>
+                        <td><a href="{{song.url}}">{{song.name}}</a></td>
+                        <td no-album>{{song.album['#text'] || "----"}}</td>
+                        <td>{{song.date['#text']}}</td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div class="pagination-div">
+                <ul class="pagination">
+                    <li ng-class="disableLeftButtons()">
+                        <a href ng-click="firstPage()">&lt;&lt;</a>
+                    </li>
+                    <li ng-class="disableLeftButtons()">
+                        <a href ng-click="previousPage()">&lt;</a>
+                    </li>
+                    <li ng-repeat="n in range()"
+                        ng-class="{active: n == pageCurrent}"
+                        ng-click="setPage(n)">
+                        <a href="#/view">{{n}}</a>
+                    </li>
+                    <li ng-class="disableRightButtons()">
+                        <a href ng-click="nextPage()">&gt;</a>
+                    </li>
+                    <li ng-class="disableRightButtons()">
+                        <a href ng-click="lastPage()">&gt;&gt;</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div >
+</div> <!-- /container -->
